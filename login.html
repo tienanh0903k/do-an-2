@@ -1,85 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập vào F8</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font -->
+    <script src="https://kit.fontawesome.com/da679a1af2.js" crossorigin="anonymous"></script>
+    <!-- custom css -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/login.css">
-    <link rel="stylesheet" href="./assets/fonts/font/fontawesome-free-6.3.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/base.css" />
+    <link rel="stylesheet" href="./assets/css/grid.css">
+
+    <!-- js -->
+    <script src="./assets/js/dungchung.js"></script>
+    <title>Đăng Nhập</title>
 </head>
+
 <body>
-    <div class="main_login">
-        <div class="coatings"></div>
-        <div class="login_container">
-            <div class="login_content">
-                <div class="login_back">
-                    <i class="fa-solid fa-angle-left"></i>
-                </div>
-                <div class="login_header">
-                    <a href="">
-                        <img src="./assets/img/login/logo-f8.png" alt="" class="login_logo">
-                    </a>
-                    <h1>Đăng nhập vào F8</h1>
-                </div>
-                <div class="login_body">
-                    <div class="login_formbody">
-                        <div class="login_formbody-top">
-                            <div class="formbody-top_title">
-                                <label for="">Số điện thoại</label>
-                                <label for="">Đăng nhập với email</label>
-                            </div>
-                            <div class="formbody-yop_inputSDT">
-                                <div class="inputSDT-district">
-                                    <div class="district-content">
-                                        <span>VN +84</span>
-                                        <i class="fa-sharp fa-solid fa-chevron-down"></i>
-                                    </div>
-                                </div>
-                                <div class="line"></div>
-                                <input type="text" placeholder="Số điện thoại" name="phone" maxlength="12" value="">
-                            </div>
-                        </div>
-                        <div class="login_formbody-bottom">
-                            <div class="formbody-bottom_content">
-                                <input disabled="" name="phone_code" placeholder="Nhập mã xác nhận" type="number" maxlength="6" value="">
-                                <div class="btn_send">
-                                    <span>Gửi mã</span>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="index.html" class="btn_Dangnhap">
-                            <div class="login_formbody-btn">
-                                <span>Đăng nhập</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="signing">
-                        <span>Bạn chưa có tài khoản?</span>
-                        <a href="" class="link_signing">Đăng ký</a>
-                    </div>
-                </div>
-                <div class="login-content_footer">
-                    <span>Việc bạn tiếp tục sử dụng trang web này đồng nghĩa bạn đồng ý với</span>
-                    <span>
-                        <a href="">Điều khoản sử dụng</a>
-                        của chúng tôi.
-                    </span> 
-                </div>
-            </div>
-            <div class="login_about">
-                <div class="login_about-content">
+    <div class="app">
+        <!-- ---header start--- -->
+        <script>addHeader();</script>
+        <!-- --header end--- -->
 
-                    <a href="">Giới thiệu về F8</a>
-                    <span>|</span>
-                    <a href="">F8 trên Youtube</a>
-                    <span>|</span>
-                    <a href="">F8 trên Facebook</a>
+
+        <!--  --login start--- -->
+        <div class="container">
+
+            <div class="auth__login">
+                <h3 class="auth__title">Bạn đã có tài khoản IVY</h3>
+                <p class="auth__desc">Nếu bạn đã có tài khoản, hãy đăng nhập
+                    để tích lũy điểm thành viên và nhận được những ưu đãi tốt hơn!
+                </p>
+                <!--  --form dang nhap--- -->
+                <form onsubmit="return logIn(this)" class="auth__form" role="login" name="frm_customer_account_email"
+                    enctype="application/x-www-form-urlencoded" method="post" action="" autocomplete="off">
+                    <div class="form-group">
+                        <input class="form-control" name="username" type="text" placeholder="Email/SĐT"
+                            value="">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="password" type="password" placeholder="Mật khẩu">
+                    </div>
+                    <div class="auth__form__options">
+                        <div class="form-checkbox">
+                            <label>
+                                <input class="checkboxs" value="1" name="customer_remember" type="checkbox">
+                                <span style="margin-left: 5px"> Ghi nhớ đăng nhập</span>
+                            </label>
+                        </div>
+                        <a class="auth__form__link" href="https://ivymoda.com/customer/forgotpass">Quên mật khẩu? </a>
+                    </div>
+                    <div class="auth__form__buttons">
+                        <button id="but_login_email" name="but_login_email" class="btn btn--large">Đăng nhập</button>
+                    </div>
+                </form>
+                <!-- -- End form dang nhap--- -->
+
+            </div>
+            <div class="auth__register">
+                <h3 class="auth__title">Bạn đã có tài khoản IVY</h3>
+                <p class="auth__desc">
+                <p class="auth__desc">Nếu bạn chưa có tài khoản trên ivymoda.com,
+                    hãy sử dụng tùy chọn này để truy cập biểu mẫu đăng ký.
+                </p>
+                <p>
+                    Bằng cách cung cấp cho IVY moda thông tin chi tiết của bạn, quá trình mua hàng trên ivymoda.com sẽ
+                    là một trải nghiệm
+                    thú vị và nhanh chóng hơn!
+                </p>
+                <div class="auth__form__buttons">
+                    <button id="but_login_email" name="but_login_email" class="btn btn--large">
+                     <a href="dangki.html">Dang ky</a>
+                    </button>
                 </div>
             </div>
+
+
         </div>
+        <!--  --login end--- -->
+        <script>addFooter();</script>
     </div>
-
-    <script src="./assets/js/login.js"></script>
 </body>
+<script src="./assets/js/login.js"></script>
+
 </html>

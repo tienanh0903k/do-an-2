@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font -->
+    <script src="https://kit.fontawesome.com/da679a1af2.js" crossorigin="anonymous"></script>
+    <!-- custom css -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/base.css" />
+    <link rel="stylesheet" href="./assets/css/grid.css">
+    <title>IVY Model</title>
+    <!--js-->
+    <script src="./assets/js/dungchung.js"></script>
+</head>
+<style>
+    .patch__list {
+        display: flex;
+        margin-top: 80px;
+        font-size: 14px;
+        padding: 12px 0 12px 12px;
+    }
+
+    .patch__item a {
+        color: #000000;
+    }
+
+    .patch__item:nth-child(2) a::before {
+        content: "-";
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+
+    /* product */
+    .products-container {
+        width: 100vw;
+        height: 1400px;
+        display: flex;
+        margin-top: 30px;
+    }
+
+    .products__menu {
+        width: 25%;
+        height: 100%;
+        padding: 20px;
+    }
+
+
+    .products__content {
+        width: 75%;
+        height: 100%;
+        padding: 50px;
+    }
+
+    li.products__item {
+        padding: 12px;
+    }
+
+    .products__item-title {
+        justify-content: space-between;
+        display: flex;
+        padding-bottom: 12px;
+    }
+
+
+
+
+
+    .products__item-size {
+        width: 100%;
+        display: none;
+        margin-bottom: 12px;
+    }
+
+
+    .products__item-select {
+        display: flex;
+        justify-content: space-around;
+        font-size: 10px;
+    }
+
+    .products__item-select li {
+        color: #000000;
+        padding: 12px;
+        border-top-right-radius: 9px;
+        border-bottom-left-radius: 9px;
+        border: 1px solid #000000;
+    }
+
+    .products__item-size {
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .products__item-range {
+        display: none;
+    }
+
+    .products__item-range.active {
+        display: block;
+    }
+
+    .products__item-size.active {
+        display: block;
+        max-height: 300px;
+        transition: all 0.3s ease;
+        transform: translateY(20px);
+    }
+
+    .toggle-icon i {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .toggle-icon.active i {
+        transform: translateY(2px);
+    }
+
+    h2 {
+        /* margin: -8px; */
+        padding-top: -27px;
+        position: relative;
+        top: -23px;
+    }
+
+    .min-max-range {
+        display: flex;
+    }
+
+    .min-max-values {
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    .min-max-values {
+        width: 100%;
+        max-width: 200px;
+        padding: 20px 0;
+        margin: 0;
+    }
+
+    .min-max-values span {
+        font-size: 16px;
+    }
+
+    .range {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 10px;
+        background: #000;
+        width: 70%;
+    }
+
+    .range::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        background: #000000;
+        height: 10px;
+        width: 10px;
+        border-radius: 10px;
+    }
+
+
+    input[type=range]::-webkit-slider-thumb {
+        height: 20px;
+        width: 20px;
+    }
+
+    input[type=range]::-moz-range-thumb {
+        height: 20px;
+        width: 20px;
+    }
+
+
+
+    .home-product-item {
+    display: block;
+    position: relative;
+    margin-top: 10px;
+    text-decoration: none;
+    background-color: var(--white-color);
+    border-radius: 2px;
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
+    transition: transform 0.1s ease-in;
+    will-change: transform;
+}
+
+.home-product-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.05);
+}
+
+.home-product-item__img {
+    height: 280px;
+    padding-top: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+}
+
+.home-product-item__name {
+    font-weight: 400;
+    color: #000;
+    margin: 10px 10px 6px;
+    height: 3.6rem;
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    /* tai dong so 2*/
+}
+
+.home-product-item__price {
+
+    align-items: baseline;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.home-product-item__price-old {
+    font-size: 17px;
+    color: #666;
+    text-decoration: line-through;
+}
+
+.home-product-item__price-now {
+    font-size: 22px;
+    color: #ac2e00;
+    margin-left: 8px;
+}
+
+.home-product-item__action {
+    display: flex;
+    justify-content: space-between;
+    margin: 6px 10px 0;
+    font-size: 1.2rem;
+}
+
+.home-product-item__like {
+    font-size: 1.3rem;
+}
+
+i.home-product-item__like-icon-fill {
+    display: none;
+    color: red;
+}
+
+.home-product-item__like--liked .home-product-item__like-icon-fill {
+    display: inline-block;
+}
+
+.home-product-item__like--liked .home-product-item__like-icon-null {
+    display: none;
+}
+
+.home-product-item__rating {
+    /* font-size: 0.4rem; */
+    transform: scale(0.8);
+    transform-origin: right;
+    color: #d5d5d5;
+    margin-left: auto;
+    position: relative;
+    top: -1px;
+}
+
+
+
+.home-product-item__star--gold {
+    color: rgb(216, 216, 108);
+}
+
+.home-product-item__sold {
+    font-size: 1.2rem;
+    color: orange;
+    margin-left: 6px;
+}
+
+.home-product-item__origin {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+
+}
+
+
+.home-product-item__fav {
+    position: absolute;
+    top: 10px;
+    left: -4px;
+    background-color: #dba000;
+    color: #ccc;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.6rem;
+    padding-right: 4px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.home-product-item__fav i {
+    font-size: 0.9rem;
+    margin: 0 2px 0 5px;
+    color: #fff;
+}
+
+.home-product-item__fav span {
+    color: #ffff;
+}
+
+.home-product-item__fav::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    border-top: 3px solid currentColor;
+    border-left: 3px solid transparent;
+    filter: brightness(50%);
+    /* do sang */
+}
+
+
+
+ .home-product-item__origin button {
+     background-color: #000;
+     color: #fff;
+     border: none;
+     border-radius: 50%;
+     width: 25px;
+     height: 25px;
+     font-size: 1em;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .pagination {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin-top: 20px;
+ }
+
+ .pagination .btn-prev,
+ .pagination .btn-next {
+     background-color: #000;
+     color: #fff;
+     border: none;
+     border-radius: 50%;
+     width: 30px;
+     height: 30px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .pagination .pagination-numbers {
+     display: flex;
+     gap: 10px;
+     padding: 0 20px;
+ }
+
+ .pagination .pagination-number {
+     width: 30px;
+     height: 30px;
+     background-color: #fff;
+     color: #000;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border-radius: 50%;
+ }
+
+
+
+ .pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.pagination button {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 4px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #45a049;
+}
+
+.pagination button:disabled {
+  background-color: #ddd;
+  color: #666;
+  border: 1px solid #ddd;
+  cursor: not-allowed;
+}
+
+.pagination .active {
+  background-color: #45a049;
+}
+
+ 
+
+
+
+
+</style>
+
+<body>
+    <div class="app">
+        <script>addHeader()</script>
+
+       
+        <div class="patch-page">
+            <ul class="patch__list">
+                <li class="patch__item">
+                    <a href="index.html">Trang chu</a>
+                </li>
+                <li class="patch__item">
+                    <a href="index.html">NEW ARRIVAL</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="products-container">
+            <div class="products__menu">
+                <div class="products__box">
+                    <ul class="products__list">
+                        <li class="products__item">
+                            <p class="products__item-title">Size
+                                <span class="toggle-icon"><i class="fa-solid fa-plus"></i></span>
+                            </p>
+
+                            <div class="products__item-size">
+                                <ul class="products__item-select">
+                                    <li>S</li>
+                                    <li>M</li>
+                                    <li>L</li>
+                                    <li>XL</li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="products__item">
+                            <p class="products__item-title">Mau sac
+                                <span class="toggle-icon"><i class="fa-solid fa-plus"></i></span>
+                            </p>
+
+                            <div class="products__item-range">
+                                <div class="min-max-range">
+                                    <input type="range" min="0" max="50000" value="0" class="range" id="min">
+                                    <input type="range" min="50000" max="100000" value="100000" class="range" id="max">
+                                </div>
+                                <div class="min-max-values">
+                                    <div class="min">
+                                        <span class="value-min"></span>
+                                    </div>
+                                    <div class="max">
+                                        <span class="value-max"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="products__item">
+                            <p class="products__item-title">Mau sac
+                                <span class="toggle-icon"><i class="fa-solid fa-plus"></i></span>
+                            </p>
+
+                            <div class="products__item-range">
+                                <div class="min-max-range">
+                                    <input type="range" min="0" max="50000" value="0" class="range" id="min">
+                                    <input type="range" min="50000" max="100000" value="100000" class="range" id="max">
+                                </div>
+                                <div class="min-max-values">
+                                    <div class="min">
+                                        <span class="value-min"></span>
+                                    </div>
+                                    <div class="max">
+                                        <span class="value-max"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="products__item">
+                            <p class="products__item-title">Mau sac
+                                <span class="toggle-icon"><i class="fa-solid fa-plus"></i></span>
+                            </p>
+
+                            <div class="products__item-range">
+                                <div class="min-max-range">
+                                    <input type="range" min="0" max="50000" value="0" class="range" id="min">
+                                    <input type="range" min="50000" max="100000" value="100000" class="range" id="max">
+                                </div>
+                                <div class="min-max-values">
+                                    <div class="min">
+                                        <span class="value-min"></span>
+                                    </div>
+                                    <div class="max">
+                                        <span class="value-max"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="products__content">
+                <div class="grid wide">
+                    <h2>MỪNG ĐẠI LỄ - SALE 30% ALL ITEMS</h2>
+                    <div class="row">
+                      <!--   <div class="col l-3 m-4">
+                            <div class="product">
+                        
+                                <div class="info-ticket">Best Seller</div>
+                                <div class="thumb-product">
+                                    <img src="https://pubcdn.ivymoda.com/files/product/thumab/400/2023/04/12/7bee81a35c0a0df09f1685d0f4f76afb.jpg"> 
+                                    <div class="info-product">
+                                        <div class="list-color">
+                        
+                                            <a href="#" class="color-picker">
+                                                <img src="https://pubcdn.ivymoda.com/ivy2/images/color/013.png" alt="013" class="lazy">
+                                            </a>
+                                            <div class="favourite">
+                                                <i class="fa-regular fa-heart"></i>
+                                            </div>
+                                        </div>
+                                        <h3 class="title-product">
+                                            <a href="#" onclick='showDetails()'>
+                                                <span>Vay nu mot 2023 dep</span>
+                                            </a>
+                                        </h3>
+                                        <div class="price-product">
+                                            <ins>
+                                                <span>500000</span>
+                                            </ins>
+                                            <div class="add-to-cart">
+                                                <button onclick="addToCart()"><i
+                                                        class="fa-solid fa-bag-shopping"></i></button>
+                        
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="pagination" id="pagination"></div>
+                </div>
+            </div>
+        </div>
+
+        <script>addFooter();</script>
+    </div>
+</body>
+
+<script>
+    const list_Product = JSON.parse(window.localStorage.getItem('ListProducts'));
+    const itemsPerPage = 8;
+    let currentPage = 1;
+
+    function renderProductsOnPage(products, page) {
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const productsOnPage = products.slice(startIndex, endIndex);
+        renderProducts(productsOnPage);
+    }
+
+    function hienThiNut(totalPages) {
+        let paginationStr = "";
+        for (let i = 1; i <= totalPages; i++) {
+            paginationStr += `<button onclick="HienThi(${i})">${i}</button>`;
+        }
+
+        document.querySelector(".pagination").innerHTML = paginationStr;
+    }   
+
+
+    function HienThi(page) {
+        currentPage = page;
+        renderProductsOnPage(list_Product, currentPage);
+        hienThiNut(Math.ceil(list_Product.length / itemsPerPage));
+    }
+    HienThi(1);
+
+    
+
+    function renderProducts(products) {
+    let str = "";
+    products.forEach((product) => {
+        const obj = JSON.stringify(product);
+        str += `
+             <div class="col l-3 m-4">
+                            <a class="home-product-item" href="product_detail.html?id={{x.maSanPham}}">
+                                <div class="home-product-item__img" style="
+                                         background-image: url(${product.image});"></div>
+                                 <a href="#" onclick=\'showDetail(\`${obj}\`)\'>
+                                <h4 class="home-product-item__name">
+                                    ${product.ten}
+                                </h4>
+                                </a>
+                                <div class="home-product-item__price">  
+                                    <span class="home-product-item__price-now">${product.gia} VNĐ</span>
+                                </div>
+
+                                <div class="home-product-item__action">
+                                    <span class="home-product-item__like home-product-item__like--liked">
+                                        <i class="home-product-item__like-icon-null far fa-heart" aria-hidden="true"></i>
+                                        <i class="home-product-item__like-icon-fill fas fa-heart" aria-hidden="true"></i>
+                                    </span>
+                                    <div class="home-product-item__sold">Còn hàng:2</div>
+                                </div>
+                                <div class="home-product-item__fav">
+                                    <i class="fas fa-check" aria-hidden="true"></i>
+                                    <span>Yeu thich</span>
+                                </div>
+                     </a>
+         </div>`
+    });
+
+    document.querySelector(".products__content .row").innerHTML = str;
+}
+    
+    function showDetail(objSP) {
+        window.localStorage.setItem("detail-products", objSP);
+        location.href = "chitietSanPham.html"
+    }
+
+
+        /* tab menu open */
+        var toggleIcon = document.querySelectorAll(".toggle-icon");
+
+    toggleIcon.forEach((icon) => {
+        icon.addEventListener("click", (e) => {
+            var parent = e.currentTarget.closest(".products__item");
+            var content = parent.querySelector(".products__item-size, .products__item-range");
+            content.classList.toggle("active");
+            icon.querySelector("i").classList.toggle("fa-plus");
+            icon.querySelector("i").classList.toggle("fa-minus");
+            icon.classList.toggle("active");
+        });
+    });
+
+
+    /* range cost */
+    var minValue = document.querySelector(".value-min");
+    var maxValue = document.querySelector(".value-max");
+    var min = document.querySelector("#min");
+    var max = document.querySelector("#max");
+
+    minValue.innerHTML = min.value;
+    maxValue.innerHTML = max.value;
+
+    min.oninput = (e) => {
+        minValue.innerHTML = e.target.value;
+    }
+
+    max.oninput = (e) => {
+        maxValue.innerHTML = e.target.value;
+    }
+
+</script>
+</html>

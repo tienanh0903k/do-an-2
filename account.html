@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font -->
+    <script src="https://kit.fontawesome.com/da679a1af2.js" crossorigin="anonymous"></script>
+    <!-- custom css -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/dangki.css">
+    <link rel="stylesheet" href="./assets/css/base.css" />  
+    <link rel="stylesheet" href="./assets/css/grid.css" />  
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <!--js-->
+    <script src="./assets/js/dungchung.js"></script>
+    <title>Thông tin tài khoản</title>
+</head>
+    <style>
+        .breadcrumb__list {
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+            padding: 16px 35px;
+            margin-top: 80px;
+            font-size: 14px;
+            border-bottom: 1px solid #f7f8f9;
+        }
+        .content-left {
+            padding: 0 15%;
+        }
+        .table-order {
+            margin-top:50px;
+        }
+
+
+    </style>
+<body>
+    <main class="app">
+        <!--  header -->
+        <script>addHeader();</script>
+        <div class="breadcrumb__list">
+           <a href="#">Trang chủ</a>
+            <a href="#">- Thong tin</a>
+        </div>
+        <div class="container">
+            <div class="grid wide">
+                <div class="row">
+                    <div class="content-left col l-12">
+                        <div class="order-block__title">
+                            <h4>TÀI KHOẢN CỦA TÔI</h4>
+                        </div>
+                
+                        <form style="margin-top:20px" id="accountForm">
+                            <div class="col-2 col-s-3 margin-bot">
+                              <label for="username">Tên người dùng:</label>
+                            </div>
+                            <div class="col-10 col-s-9 margin-bot">
+                              <input type="text" name="username" id="username" style="background: #cecccc;"readonly>
+                            </div>
+                            <div class="col-2 col-s-3 margin-bot">
+                              <label for="phone">Số điện thoại</label>
+                            </div>
+                            <div class="col-10 col-s-9 margin-bot">
+                              <input type="text" name="phone" id="phone">
+                            </div>
+                            <div class="col-2 col-s-3 margin-bot">
+                              <label for="email">Email</label>
+                            </div>
+                            <div class="col-10 col-s-9 margin-bot">
+                              <input type="email" name="email" id="email">
+                            </div>
+                            <div class="col-2 col-s-3 margin-bot">
+                              <label for="address">Địa chỉ:</label>
+                            </div>
+                            <div class="col-10 col-s-9 margin-bot">
+                              <input type="text" name="address" id="address">
+                            </div>
+                            <div class="col-2 col-s-3 margin-bot">
+                              <label for="password">Mật khẩu</label>
+                            </div>
+                            <div class="col-10 col-s-9 margin-bot">
+                              <input type="password" name="password" id="password">
+                            </div>
+                            <div class="btn-Submit">
+                              <button style="background: #202020; color: #fff; padding: 5px 12px" type="button" onclick="updateAccount()">Cập nhật</button>
+                            </div>
+                          </form>
+                    </div>
+                    <div class="table-order col l-12">
+                        <div class="order-block__title">
+                            <h2>Lịch sử mua hàng</h2>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Đơn hàng</th>
+                                    <th>Ngày mua</th>
+                                    <th>Sản phẩm</th>
+                                    <th>Tổng tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orderHistory">
+                                
+                            </tbody>
+                        </table>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        
+
+        <!-- footer -->
+        <!-- <script>addFooter();</script> -->
+
+    </main>
+</body>
+<script src="./data/list_course.js"></script>
+<script src="./assets/js/main.js"></script>
+<script>
+    window.onload = function() {
+        khoiTao();
+        loadAccountInfo();
+        var currentUser = getCurrentUser();
+        updateListUser(currentUser);
+        // var currentUser = getCurrentUser();
+        // if (currentUser) {
+        // var listUser = getListUser();
+        // for (var u of listUser) {
+        //     if (currentUser.username == listUser.username) {
+        //         currentUser = u;
+        //         setCurrentUser(u);
+        //     }
+        // }}
+        
+    }
+
+    function loadAccountInfo() {
+    var currentUser = getCurrentUser();
+    if (currentUser) {
+      document.getElementById("username").value = currentUser.username;
+      document.getElementById("phone").value = currentUser.sdt;
+      document.getElementById("email").value = currentUser.email;
+      document.getElementById("address").value = currentUser.diachi;
+      document.getElementById("password").value = currentUser.pass;
+    }
+  }
+  function updateAccount() {
+    var currentUser = getCurrentUser();
+    if (currentUser) {
+      currentUser.sdt = document.getElementById("phone").value;
+      currentUser.email = document.getElementById("email").value;
+      currentUser.diachi = document.getElementById("address").value;
+      currentUser.pass = document.getElementById("password").value;
+
+      // Lưu lại thông tin tài khoản mới vào Local Storage
+      setCurrentUser(currentUser);
+      alert("Cập nhật thông tin tài khoản thành công!");
+    }
+  }
+
+
+
+</script>
+</html>

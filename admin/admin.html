@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <link rel="stylesheet" href="../assets/css/grid.css">
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
+        text-decoration: none;
+        font-family: 'Josefin Sans', sans-serif;
+    }
+
+    body {
+        background-color: #f3f5f9;
+    }
+
+    .wrapper {
+        display: flex;
+        position: relative;
+    }
+
+    .wrapper .sidebar {
+        width: 200px;
+        height: 100%;
+        background: #4b4276;
+        padding: 30px 0px;
+        position: fixed;
+    }
+
+    .wrapper .sidebar h2 {
+        color: #fff;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .wrapper .sidebar ul li {
+        padding: 15px;
+        border-bottom: 1px solid #bdb8d7;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .wrapper .sidebar ul li a {
+        color: #bdb8d7;
+        display: block;
+    }
+
+    .wrapper .sidebar ul li a .fas {
+        width: 25px;
+    }
+
+    .wrapper .sidebar ul li:hover a {
+        color: #000000;
+    }
+
+    .wrapper .sidebar .social_media {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+    }
+
+    .wrapper .sidebar .social_media a {
+        display: block;
+        width: 40px;
+        background: #594f8d;
+        height: 40px;
+        line-height: 45px;
+        text-align: center;
+        margin: 0 5px;
+        color: #bdb8d7;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .wrapper .main_content {
+        width: 100%;
+        margin-left: 200px;
+    }
+
+    .wrapper .main_content .header {
+        padding: 20px;
+        background: #fff;
+        color: #717171;
+        border-bottom: 1px solid #e0e4e8;
+        height: 60px;
+    }
+
+    .wrapper .main_content .info {
+        margin: 20px;
+        color: #717171;
+        line-height: 25px;
+    }
+
+    .wrapper .main_content .info div {
+    }
+
+
+    .tab-link.active {
+        background-color: #3366CC;
+        /* Change the background color for active tabs */
+        color: #fff;
+        /* Change the text color for active tabs */
+    }
+
+    .menu.active {
+        background: #ffffff;
+        color: #000;
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    
+
+/* table */
+table,
+td,
+th {
+    border: 1px solid rgb(184, 179, 179);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    
+    height: 20px;
+  padding: 15px;
+  text-align: left;
+}
+td {
+    padding: 3px 15px;
+}
+
+
+.row .padding-box input,
+select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    width: 100%;
+    border-radius: 3px;
+}
+
+
+.row .tabcontent {
+    padding: 12px;
+}
+
+.tabcontent .row {
+    margin-top: 12px;
+}
+
+.button_option {
+    margin: 14px;
+    height: 12px;
+    width: 100%;
+}
+.button_option button {
+   
+
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+.header img {
+    width: 25px;
+    height: 25px;
+}
+
+.selected-page {
+    background-color: #007bff;
+    color: #fff;
+}
+
+
+button.btn-search {
+  padding: 5px;
+  width: 100%;
+  height: 35px;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.row .padding-box {
+    padding: 10px 8px 0px 8px;
+}
+.padding-btn {
+    padding: 5px 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+@media (max-height: 500px) {
+    .social_media {
+        display: none !important;
+    }
+}
+</style>
+
+<body>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+    <div class="wrapper">
+        <div class="sidebar">
+            <h2>OWEN SHOP</h2>
+            <ul>
+                <li class="menu"><a href="#" class="tab-link" data-tab="home"><i class="fas fa-home"></i>Home</a></li>
+                <li class="menu"><a href="#" class="tab-link" data-tab="profile"><i class="fas fa-user"></i>Khach hang</a>
+                </li>
+                <li class="menu"><a href="#" class="tab-link" data-tab="product"><i class="fas fa-shopping-cart"></i>Don hang</a>
+                </li>
+                <li class="menu"><a href="#" class="tab-link" data-tab="dashboard"><i class="fas fa-chart-bar"></i>Thong ke</a>
+                </li>
+                <li class="menu"><a href="#" class="tab-link" data-tab="invoice"><i class="fas fa-file-invoice"></i>Hóa đơn</a>
+                </li>
+                <li class="menu"><a href="#" class="tab-link" data-tab="provider"><i class="fas fa-truck"></i>Nhà cung cấp</a>
+                </li>
+            </ul>
+            <div class="social_media">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="main_content">
+            <div class="header">
+                <h3>Chào mừng quản trị viên đến với trang web</h3>
+                <div class="avatar">
+                    <img src="data:image/png;base64,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" alt="">
+                </div>
+            </div>
+            <div class="info">
+                <div id="home" class="tab-content">
+                    <div class="grid wide">
+                        <div class="row">
+                            <div class="col c-4">
+                                <form>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <label for="txtright">Mã sản phẩm:</label>
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <input type="text" id="masanpham" placeholder="Nhập mã sản phẩm...Tự động sinh nếu không nhập..." required >
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <label for="txtright">Mã chuyên mục:</label>
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <input type="text" id="machuyenmuc" placeholder="Nhập mã chuyên muc...Tự động sinh nếu không nhập..." required>
+                                    </div>
+                                
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <label for="txtright">Tên sản phẩm:</label>
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <input type="text" id="tensanpham" placeholder="Nhập tên sản phẩm..." required>
+                                    </div>
+                                
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <label for="txtright">Hình ảnh:</label>
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <input type="file" id="imgproduct" onchange="loadFile(event)">
+                                        <center>
+                                            <span style="float: left;">VIEW</span>  
+                                            <img id="viewimg" style="max-width:180px;max-height:180px;margin-top: 10px;">
+                                        </center>
+                                    </div>
+                                    
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <label for="txtright">Ngày tạo:</label>
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <input type="text" id="ngaytao" placeholder="Nhập ngày tạo..." required>
+                                    </div>
+                                
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <label for="txtright">Số lượng:</label>
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <input type="number" id="slsp" placeholder="Nhập số lượng..." required>
+                                    </div>
+                                
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <label for="txtright">Giá bán:</label>
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <input type="number" id="giaban" placeholder="Nhập giá bán..." required>
+                                    </div>
+                                
+                                    <button class=" " style="background-color: rgba(44, 140, 15, 0.8);" onclick="ThemSanPham()">Thêm sản phẩm</button>
+                                    <button id="#delete-sp" class="btn-form1" style="background-color: rgba(227, 32, 21, 0.8);">Xoa</button>
+                                    <button class="btn-form2" style="background-color: rgba(14, 87, 224, 0.8);" id="btnUpdate">Cập nhật
+                                        thông tin
+                                    </button>
+                                
+                                </form>
+                            </div>
+                            <div class="col c-8">
+                                <div class="tabcontent">
+                                    <div class="title">
+                                        <h2>Danh sách sản phẩm</h2>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col c-10 padding-box">
+                                            <input type="text" id="search-customer" placeholder="Nhập mã, tên hoặc số điện thoại khách hàng...">
+                                        </div>
+                                        <div class="col-2 col-s-12 padding-box">
+                                            <button class="btn-search"><i class="fas fas fa-search" aria-hidden="true"></i> Tìm kiếm</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div style="max-height: 400px; overflow: auto;">
+                                            <table class="table">
+                                                <tr style="background: #ccc;">
+                                                    <th>ID</th>
+                                                    <th>Ma CM</th>
+                                                    <th>Tên SP</th>
+                                                    <th>Image</th>
+                                                    <th>Ngày tạo</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Giá</th>
+                                                </tr>
+                                    
+                                                <tbody class="content-table">
+                                                <!-- <tr>
+                                                        <td>1</td>
+                                                        <td>nta</td>
+                                                        <td>{{x.tenSanPham}}</td>
+                                                        <th>
+                                                            <img style="width: 30px; height: 30px;" src="{{x.anhDaiDien}}">
+                                                        </th>
+                                                        <td>{{x.ngayTao | date:'yyyy-MM-dd'}}</td>
+                                                        <td>{{x.soLuong}}</td>
+                                                        <td>{{x.gia}}</td>
+                                                        <td>{{x.trangThai ? 'Đang bán' : 'Không bán'}}</td>
+                
+                                                    </tr> -->
+                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="profile" class="tab-content">
+                    <div class="grid wide">
+                        <div class="row">
+                            <div class="col c-4">
+                                <form>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <label for="txtright">Tên khách hàng:</label>
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <input type="text" id="tenkhachhang" placeholder="Tên khách hàng...." required >
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <label for="txtright">Số điện thoai:</label>
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <input type="text" id="sodienthoai" placeholder="Nhập số điện thoại.." required>
+                                    </div>
+                                
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <label for="txtright">Email:</label>
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <input type="text" id="email" placeholder="Nhập tên email..." required>
+                                    </div>
+
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <label for="txtright">Địa chỉ:</label>
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <input type="text" id="diachi" placeholder="Nhập địa chỉ..." required>
+                                    </div>
+                                    
+                                    <div class="btn-option" style="margin-top: 20px;">
+                                        <button class="padding-btn" style="background-color: rgba(44, 140, 15, 0.8);" onclick="ThemSanPham()">Thêm</button>
+                                        <button class="padding-btn" id="#delete-sp" class="btn-form1" style="background-color: rgba(227, 32, 21, 0.8);">Xoa</button>
+                                        <button class="padding-btn" class="btn-form2" style="background-color: rgba(14, 87, 224, 0.8);" id="btnUpdate">Cập nhật</button>
+                                        <button class="padding-btn" class="btn-form1" style="background-color: rgba(126, 114, 114, 0.8);">Làm mới</button>
+                                    </div>
+                                
+                                </form>
+                            </div>
+                            <div class="col c-8">
+                                <div class="tabcontent">
+                                    <div class="title">
+                                        <h2>Danh sách khách hàng</h2>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-10 col-s-12 padding-box">
+                                            <input type="text" id="search-customer" placeholder="Nhập mã, tên hoặc số điện thoại khách hàng...">
+                                        </div>
+                                        <div class="col-2 col-s-12 padding-box">
+                                            <button class="btn-search"><i class="fas fas fa-search" aria-hidden="true"></i> Tìm kiếm</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div style="max-height: 400px; overflow: auto;">
+                                            <table class="table">
+                                                <tr style="background: #ccc;">
+                                                    <th>STT</th>
+                                                    <th>Tên đăng nhập</th>
+                                                    <th>Số điện thoại</th>
+                                                    <th>Email</th>
+                                                    <th>Địa chỉ</th>
+                                                    <th>Trạng thái</th>
+                                                </tr>
+                                                <tbody class="content-user">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="product" class="tab-content">
+                    <!-- Content for the Profile tab -->
+                    <div>Lorem ipsum for Profile</div>
+                </div>
+
+                <div id="provider" class="tab-content">
+                    <div class="grid wide">
+                        <div class="row">
+                            <div class="col c-4">
+                                <form>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <label for="txtright">Mã nhà phân phối:</label>
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <input type="text" id="maphanphoi" placeholder="Mã nhà phân phối...." required >
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <label for="txtright">Tên nhà phân phối:</label>
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <input type="text" id="tennhapp" placeholder="Tên nhà phân phối.." required>
+                                    </div>
+                                
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <label for="txtright">Số điện thoại:</label>
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <input type="text" id="sdt" placeholder="Nhập tên sdt..." required>
+                                    </div>
+
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <label for="txtright">Địa chỉ:</label>
+                                    </div>
+                                    <div class="col-12 col-s-12 padding-box">
+                                        <input type="text" id="diachi" placeholder="Nhập địa chỉ..." required>
+                                    </div>
+                                    
+                                    <div class="btn-option" style="margin-top: 20px;">
+                                        <button class="padding-btn" style="background-color: rgba(44, 140, 15, 0.8);" onclick="ThemSanPham()">Thêm</button>
+                                        <button class="padding-btn" id="#delete-sp" class="btn-form1" style="background-color: rgba(227, 32, 21, 0.8);">Xoa</button>
+                                        <button class="padding-btn" class="btn-form2" style="background-color: rgba(14, 87, 224, 0.8);" id="btnUpdate">Cập nhật</button>
+                                        <button class="padding-btn" class="btn-form1" style="background-color: rgba(126, 114, 114, 0.8);">Làm mới</button>
+                                    </div>
+                                
+                                </form>
+                            </div>
+                            <div class="col c-8">
+                                <div class="tabcontent">
+                                    <div class="title">
+                                        <h2>Danh sách nhà cung cấp</h2>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-10 col-s-12 padding-box">
+                                            <input type="text" id="search-customer" placeholder="Nhập mã, tên hoặc số điện thoại khách hàng...">
+                                        </div>
+                                        <div class="col-2 col-s-12 padding-box">
+                                            <button class="btn-search"><i class="fas fas fa-search" aria-hidden="true"></i> Tìm kiếm</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div style="max-height: 400px; overflow: auto;">
+                                            <table class="table">
+                                                <tr style="background: #4b4276; color: #fff;">
+                                                    <th>ID</th>
+                                                    <th>Tên nhà phân phối</th>
+                                                    <th>Địa chỉ</th>
+                                                    <th>Số điện thoại</th>
+                                                    <th>Trạng thái</th>
+                                                </tr>
+                                                <tbody class="content-provider">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+
+</body>
+    <script src="../data/list_course.js"></script>
+    <script src="../assets/js/dungchung.js"></script>
+<script src="../assets/js/admin.js"></script>
+<script>
+        
+    function loadFile(event) {
+        const imageInput = event.target;
+        const viewImage = document.getElementById("viewimg");
+
+        if (imageInput.files && imageInput.files[0]) {
+            const file = imageInput.files[0];
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const realImagePath = e.target.result;
+                viewImage.src = realImagePath;
+                console.log("Đường dẫn thật đến tệp: " + realImagePath);
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+
+
+
+
+
+    const tabLinks = document.querySelectorAll(".tab-link");
+    const menuItems = document.querySelectorAll(".menu");
+    const tabContents = document.querySelectorAll('.tab-content');
+    function showTab1() {
+        menuItems[0].classList.add('active');
+        tabContents[0].classList.add('active');
+    }
+
+    showTab1();
+    tabLinks.forEach(tab => {
+        tab.addEventListener("click", e => {
+            e.preventDefault();
+
+            // Loại bỏ lớp 'active' từ tất cả các mục trong menuItems
+            menuItems.forEach(menu => {
+                menu.classList.remove('active');
+            });
+
+            // Thêm 'active' vào mục cụ thể khi tab được nhấp
+            tab.parentElement.classList.add('active');
+
+            const tabId = e.target.getAttribute("data-tab");
+
+            // Loại bỏ lớp 'active' từ tất cả nội dung tab
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Hiển thị nội dung tab tương ứng
+            const tabContent = document.getElementById(tabId);
+            tabContent.classList.add('active');
+            console.log(tabContent);
+        });
+    });
+
+</script>
+
+</html>

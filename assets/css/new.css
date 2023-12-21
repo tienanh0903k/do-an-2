@@ -1,0 +1,115 @@
+
+
+#main {
+    padding-top: 90px;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 100%;
+}
+
+.title-section {
+    text-align: center;
+}
+
+.title-section.big {
+    font-size: 50px;
+    font-family: "Montserrat";
+    font-weight: 500;
+    line-height: 30px;
+}
+
+
+.e-magazine-story-wrapper {
+    display: grid;
+    grid-template-columns: auto 1170px;
+    border: 1px solid #e7e8e9;
+    grid-gap: 60px;
+    border-radius: 80px 0px;
+    overflow: hidden;
+    height: 600px;
+    margin-top: 20px;
+}
+
+
+.e-magazine-story-wrapper .content {
+    padding: 30px 0px 0px 30px;
+}
+
+.e-magazine-story-wrapper .image {
+    border-radius: 80px 0px;
+    overflow: hidden;
+}
+
+.e-magazine-story-wrapper .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+
+
+
+
+
+
+
+.e-magazine-new-section {
+    margin-top: 64px;
+}
+.e-magazine-new-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+}
+
+.e-magazine-new-wrapper .e-magazine-new-item {
+    display: block;
+}
+
+.e-magazine-new-wrapper .e-magazine-new-item .img {
+    overflow: hidden;
+    max-height: 802px;
+}
+.e-magazine-new-wrapper .e-magazine-new-item .desc {
+    margin-top: 32px;
+}
+.e-magazine-new-item .img {
+    position: relative;
+    top: unset;
+    left: unset;
+    height: auto;
+    background-repeat: unset;
+    background-position: unset;
+    background-size: unset;
+}
+
+.e-magazine-new-wrapper .e-magazine-new-item .img img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    transition: 0.3s all linear;
+}
+
+.thumb-product .hover-img, .e-magazine-new-item .hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out 0s;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -ms-transition: all 0.3s ease-in-out 0s;
+    height: 100%;
+}
+
+

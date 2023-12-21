@@ -1,252 +1,119 @@
-const LIST_COURSE = [
+const list_Product = [
   {
     id: 1,
-    title: "Khóa học Pro",
-    title_new: `<span class="title_new">Mới</span>`,
-    conter: [
-      {
-        url: "/assets/img/course/wrapper_list--body_col--pro.png",
-        description: "HTML CSS Pro",
-        price_old: "2.499.000đ",
-        price_new: "1.299.000đ",
-        view_more: "view_more",
-        course_pro: true,
-      },
-      {
-        url: "/assets/img/course/jv_pro--coming_Soon.png",
-        description: "JavaScript Pro",
-        price_old: "",
-        price_new: "",
-        view_more: "",
-        course_pro: true,
-      },
-      {
-        url: "/assets/img/course/jv_pro--coming_Soon.png",
-        description: "ReactJS Pro",
-        price_old: "",
-        price_new: "",
-        view_more: "",
-        course_pro: true,
-      },
-    ],
+    maChuyenMuc: 1,
+    ten: "Áo 2 Dây Dáng Xòe",
+    image:
+      "https://pubcdn.ivymoda.com/files/product/thumab/400/2023/04/12/7bee81a35c0a0df09f1685d0f4f76afb.jpg",
+    gia: "150000",
+    ngayTao: "12/1/2023",
+    soLuong: "2"
   },
   {
     id: 2,
-    title: "Khóa học miễn phí",
-    title_new: ``,
-    number_sub: 309.164,
-    conter: [
-      {
-        url: "/assets/img/course/kien_thuc_nen_tang.png",
-        description: "Khiến Thức Nhập Môn IT",
-        view_more: "view_more",
-        user: 104.547,
-      },
-      {
-        url: "/assets/img/course/C++_conba-nangcao.png",
-        description: "Lập Trình C++ cơ bản, Nâng Cao",
-        view_more: "view_more",
-        user: 104.547,
-      },
-      {
-        url: "/assets/img/course/HTML_CSS_tu0-hero.png",
-        description: "HTML CSS từ Zero đến Hero",
-        view_more: "view_more",
-        user: 104.547,
-      },
-      {
-        url: "/assets/img/course/responsive.png",
-        description: "Responsive với Grid System",
-        view_more: "view_more",
-        user: 104.547,
-      },
-      {
-        url: "/assets/img/course/JS--coban.png",
-        description: "Lập Trình JavaScript Cơ Bản",
-        view_more: "view_more",
-        user: 104.547,
-      },
-      {
-        url: "/assets/img/course/JS--coban.png",
-        description: "Lập Trình JavaScript Nâng Cao",
-        view_more: "view_more",
-        user: 104.547,
-      },
-      {
-        url: "/assets/img/course/WSL_Ubuntu.png",
-        description: "Làm việc với Terminal & Ubuntu",
-        view_more: "view_more",
-        user: 104.547,
-      },
-      {
-        url: "/assets/img/course/react_JS.png",
-        description: "Xây Dựng Website với ReactJS",
-        view_more: "view_more",
-        user: 104.547,
-      },
-      {
-        url: "/assets/img/course/Node&ExpressJS.png",
-        description: "Node & ExpressJS",
-        view_more: "view_more",
-        user: 104.547,
-      },
-      {
-        url: "/assets/img/course/Dont_touch_your_face.png",
-        description: "Đừng Chạm Tay Lên Mặt",
-        view_more: "view_more",
-        user: 104.547,
-      },
-    ],
+    maChuyenMuc: 1,
+    ten: "Đầm Thô 1 Lớp Xẻ Eo",
+    image:
+      "https://pubcdn.ivymoda.com/files/product/thumab/1280/2022/03/14/9c0ab3211d33a203eba6ff92fdfbe90f.JPG",
+    gia: "50000",
+    ngayTao: "12/1/2023",
+    soLuong: "2"
   },
-
   {
     id: 3,
-    title: "Bài viết nổi bật",
-    title_new: ``,
-    conter: [
-      {
-        url: "/assets/img/post/post_01.png",
-        avarta: "./assets/img/Avarta/logo-f8.png",
-        name_avarta: "Sơn Đặng",
-        vip: "PostItem_avarta--vip",
-        description: "Tổng hợp các sản phẩm của học viên tại F8",
-        view_more: "view_more",
-        read_time: 6,
-      },
-      {
-        url: "/assets/img/post/post_02.jpg",
-        avarta: "./assets/img/Avarta/logo-f8.png",
-        name_avarta: "Sơn Đặng",
-        vip: "PostItem_avarta--vip",
-        description: "[Phần 1] Tạo dự án ReactJS với Webpack và Babel",
-        view_more: "view_more",
-        read_time: 7,
-      },
-      {
-        url: "/assets/img/post/post_03.png",
-        avarta: "./assets/img/Avarta/Avarta.jpg",
-        name_avarta: "Đào Khoa",
-        vip: "PostItem_avarta--vip",
-        description: "Cách đưa code lên GitHub và tạo GitHub Pages",
-        view_more: "view_more",
-        read_time: 8,
-      },
-      {
-        url: "/assets/img/post/post_04.png",
-        avarta: "./assets/img/Avarta/Avarta.jpg",
-        name_avarta: "phong",
-        description: "Ký sự ngày thứ 25 học ở F8 ",
-        view_more: "view_more",
-        read_time: 8,
-      },
-      {
-        url: "/assets/img/post/post_05.png",
-        avarta: "./assets/img/Avarta/Avarta.jpg",
-        name_avarta: "Đào Khoa",
-        description: "Các nguồn tài nguyên hữu ích cho 1 front-end developer",
-        view_more: "view_more",
-        read_time: 8,
-      },
-      {
-        url: "/assets/img/post/post_06.jpg",
-        avarta: "./assets/img/Avarta/Avarta.jpg",
-        name_avarta: "Đào Khoa",
-        description: "Thời gian và Động lực",
-        view_more: "view_more",
-        read_time: 8,
-      },
-      {
-        url: "/assets/img/post/post_07.png",
-        avarta: "./assets/img/Avarta/Avarta.jpg",
-        name_avarta: "Đào Khoa",
-        description: "Tổng hợp tài liệu tự học tiếng anh cơ bản.",
-        view_more: "view_more",
-        read_time: 8,
-      },
-      {
-        url: "/assets/img/post/post_08.jpg",
-        avarta: "./assets/img/Avarta/Avarta.jpg",
-        name_avarta: "Đào Khoa",
-        description: "Học như thế nào là phù hợp ?",
-        view_more: "view_more",
-        read_time: 8,
-      },
-    ],
+    maChuyenMuc: 1,
+    ten: "Đầm Ôm Đính Hoa",
+    image:
+      "https://pubcdn.ivymoda.com/files/product/thumab/400/2023/03/21/09aed06391dd71cfef2f5fb54376b356.jpg",
+    gia: "200000",
+    ngayTao: "12/1/2023",
+    soLuong: "2"
   },
-
   {
     id: 4,
-    title: "Videos nổi bật",
-    title_new: ``,
-    conter: [
-      {
-        url: "/assets/img/Featured_video/img_vd_01.jpg",
-        description:
-          "Sinh viên IT đi thực tập tại doanh nghiệp cần biết những gì?",
-        view_more: "view_more",
-        view: 100,
-        like: 100,
-        cmt: 100,
-      },
-      {
-        url: "/assets/img/Featured_video/img_vd_02.jpg",
-        description: `"Code Thiếu Nhi Battle" Tranh Giành Trà Sữa Size L`,
-        view_more: "view_more",
-        view: 100,
-        like: 100,
-        cmt: 100,
-      },
-      {
-        url: "/assets/img/Featured_video/img_vd_03.jpg",
-        description: "Phương pháp học lập trình của Admin F8?",
-        view_more: "view_more",
-        view: 100,
-        like: 100,
-        cmt: 100,
-      },
-      {
-        url: "/assets/img/Featured_video/img_vd_04.jpg",
-        description: "Bạn sẽ làm được gì sau khóa học?",
-        view_more: "view_more",
-        view: 100,
-        like: 100,
-        cmt: 100,
-      },
-      {
-        url: "/assets/img/Featured_video/img_vd_05.jpg",
-        description: "Làm sao để có thu nhập cao và đi xa hơn trong ngành IT?",
-        view_more: "view_more",
-        view: 100,
-        like: 100,
-        cmt: 100,
-      },
-      {
-        url: "/assets/img/Featured_video/img_vd_06.jpg",
-        description:
-          "Javascript có thể làm được gì? Giới thiệu qua về trang F8 | Học lập trình Javascript cơ bản",
-        view_more: "view_more",
-        view: 100,
-        like: 100,
-        cmt: 100,
-      },
-      {
-        url: "/assets/img/Featured_video/img_vd_07.jpg",
-        description: "ReactJS là gì? Tại sao nên học ReactJS?",
-        view_more: "view_more",
-        view: 100,
-        like: 100,
-        cmt: 100,
-      },
-      {
-        url: "/assets/img/Featured_video/img_vd_08.jpg",
-        description: "Học Flexbox qua ví dụ",
-        view_more: "view_more",
-        view: 100,
-        like: 100,
-        cmt: 100,
-      },
-    ],
+    maChuyenMuc: 1,
+    ten: "Set Lụa Dập Vân",
+    image:
+      "https://pubcdn.ivymoda.com/files/product/thumab/400/2023/04/17/b0bf3c83cca821e34d1c5a8a41cd2794.jpg",
+    gia: "230000",
+    ngayTao: "12/1/2023",
+    soLuong: "2"
+  },
+  {
+    id: 5,
+    maChuyenMuc: 1,
+    ten: "Đầm Dạ Hội Cổ Yếm",
+    image:
+      "https://pubcdn.ivymoda.com/files/product/thumab/1280/2023/05/12/8f233f54a0cf50b8a8c591470a4bcb0b.jpg",
+    gia: "3450000",
+    ngayTao: "12/1/2023",
+    soLuong: "2"
+  },
+  {
+    id: 6,
+    maChuyenMuc: 2,
+    ten: "Đầm Dạ Hội Cổ Yếm",
+    image:
+      "https://elise.vn/media/catalog/product/cache/f677d7e3a5087b6a18a5b1f320b78594/f/f/ff2306372tlkcbk2.jpg",
+    gia: "3450000",
+    ngayTao: "12/1/2023",
+    soLuong: "2"
+  },
+  {
+    id: 7,
+    maChuyenMuc: 2,
+    ten: "Đầm Dạ Hội Cổ Yếm",
+    image:
+      "https://pubcdn.ivymoda.com/files/product/thumab/400/2023/08/03/923f3afe29e4cbb325ab6cf9ec100d90.jpg",
+    gia: "3450000",
+    ngayTao: "12/1/2023",
+    soLuong: "2"
+  },
+  {
+    id: 8,
+    maChuyenMuc: 2,
+    ten: "Đầm Dạ Hội Cổ Yếm",
+    image:
+      "https://js0fpsb45jobj.vcdn.cloud/storage/upload/media/gumac/DD09007/1-VANG-DD09007.png",
+    gia: "3450000",
+    ngayTao: "12/1/2023",
+    soLuong: "2"
   },
 ];
 
-export default LIST_COURSE;
+const nhaCungCap = [
+  {
+    id: 1,
+    ten: "OWEN",
+    diaChi: "123 NTT, ,Mỹ Hào",
+    soDienThoai: "0123456789"
+  },
+  {
+    id: 2,
+    ten: "VNEXPRESS",
+    diaChi: "Quận ABC, Thành phố HCM",
+    soDienThoai: "0987654321"
+  },
+  {
+    id: 3,
+    ten: "HUNG VIEN",
+    diaChi: "Đường 123, TP.Hà Nội",
+    soDienThoai: "0123456789"
+  },
+  {
+    id: 4,
+    ten: "Công Ty MNP",
+    diaChi: "101, Thành phố Đà Nẵng",
+    soDienThoai: "0987654321"
+  }
+];
+
+// In danh sách nhà cung cấp ra console
+console.log(nhaCungCap);
+
+// const filteredProducts = list_Product.filter(
+//   (product) => product.maChuyenMuc === 2
+// );
+
+// const arr = [];
+// console.log(typeof list_Product);
